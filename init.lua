@@ -62,6 +62,10 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.breakindent = true
 vim.opt.linebreak = true
 
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -563,6 +567,7 @@ require('lazy').setup {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
+        go = { 'gofumpt' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
@@ -729,7 +734,7 @@ require('lazy').setup {
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'go' },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
