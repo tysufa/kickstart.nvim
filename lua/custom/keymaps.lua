@@ -23,3 +23,21 @@ vim.keymap.set('i', '<c-k>', '<Up>', opts)
 -- NOTE: plugins mappings
 -- nvim-tree
 vim.keymap.set({ 'i', 'n' }, '<C-n>', '<cmd> NvimTreeToggle <CR>', { desc = 'Toggle nvim-tree' })
+
+-- nvim-dap
+-- TODO: add those keybindgs in the plugins loading to avoid loading them all the time
+vim.keymap.set('n', '<leader>db', '<cmd>DapToggleBreakpoint<CR>', { desc = 'toggle breakpoint' })
+vim.keymap.set('n', '<leader>dc', '<cmd>DapContinue<CR>', { desc = 'start or continue the debugger' })
+vim.keymap.set('n', '<leader>dus', function()
+  local widgets = require 'dap.ui.widgets'
+  local sidebar = widgets.sidebar(widgets.scopes)
+  sidebar.open()
+end, { desc = 'open sidebar' })
+
+vim.keymap.set('n', '<leader>dgt', function()
+  require('dap-go').debug_test()
+end, { desc = 'debug go test' })
+
+vim.keymap.set('n', '<leader>dgl', function()
+  require('dap-go').debug_last()
+end, { desc = 'debug last go test' })
