@@ -41,3 +41,5 @@ end, { desc = 'debug go test' })
 vim.keymap.set('n', '<leader>dgl', function()
   require('dap-go').debug_last()
 end, { desc = 'debug last go test' })
+
+print 'test1'
