@@ -36,6 +36,7 @@ end
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'cpp',
   callback = function(args)
+    vim.api.nvim_create_user_command('AbrShow', 'normal i' .. cpp_abr_show, { nargs = '*' })
     vim.api.nvim_create_user_command('Abr', 'normal i' .. cpp_abr_struct, { nargs = '*' })
     vim.api.nvim_create_user_command('AbrAdd', 'normal i' .. cpp_abr_add, { nargs = '*' })
     vim.api.nvim_create_user_command('AffTab', 'normal i' .. cpp_affiche_tab, { nargs = '*' })
@@ -45,6 +46,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.api.nvim_create_user_command('CppStruct', 'normal i' .. cpp_struct, { nargs = '*' })
 
     vim.keymap.set('n', '#', '<cmd>CppStart<CR>a', { buffer = args.buf, desc = 'cpp startup file' })
+    vim.keymap.set('n', '<leader>cas', '<cmd>AbrShow<CR>', { buffer = 0, desc = '[C]++ [A]br [S]how' })
     vim.keymap.set('n', '<leader>cco', '<cmd>CppCout<CR>i', { buffer = args.buf, desc = '[C]++ [C]o[U]t' })
     vim.keymap.set('n', '<leader>cst', '<cmd>CppStruct<CR>i', { buffer = args.buf, desc = '[C]++ [S]truc[T]' })
 
