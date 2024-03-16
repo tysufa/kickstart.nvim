@@ -9,7 +9,7 @@ vim.keymap.set('n', '<C-j>', '<C-e>', opts)
 vim.keymap.set('n', '<C-k>', '<C-y>', opts)
 vim.keymap.set('n', '<leader>l', '<CMD>set wrap!<CR>', { desc = 'toggle wrapline' })
 vim.keymap.set('n', '<leader>ff', function()
-  vim.lsp.buf.format()
+  require('conform').format()
 end, { desc = '[F]ormat [F]ile' })
 vim.keymap.set({ 'n', 'v' }, 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Don't copy replaced text" })
 
