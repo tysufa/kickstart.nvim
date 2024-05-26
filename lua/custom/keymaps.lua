@@ -8,9 +8,9 @@ vim.keymap.set('n', '<C-q>', ':wq<CR>', opts)
 vim.keymap.set('n', '<C-j>', '<C-e>', opts)
 vim.keymap.set('n', '<C-k>', '<C-y>', opts)
 vim.keymap.set('n', '<leader>l', '<CMD>set wrap!<CR>', { desc = 'toggle wrapline' })
--- vim.keymap.set('n', '<leader>ff', function() -- format file but has been integrated in the init.lua
---   require('conform').format()
--- end, { desc = '[F]ormat [F]ile' })
+vim.keymap.set('n', '<leader>ff', function()
+  require('conform').format()
+end, { desc = '[F]ormat [F]ile' })
 vim.keymap.set({ 'n', 'v' }, 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Don't copy replaced text" })
 
 vim.keymap.set('i', '<C-s>', '<esc>:w<CR>a', opts)
