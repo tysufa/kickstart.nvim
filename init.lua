@@ -331,64 +331,8 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-      -- local servers = {
-      --   clangd = {},
-      --   gopls = {
-      --     -- settings = {
-      --     --   hints = {
-      --     --     rangeVariableTypes = true,
-      --     --     parameterNames = true,
-      --     --     constantValues = true,
-      --     --     assignVariableTypes = true,
-      --     --     compositeLiteralFields = true,
-      --     --     compositeLiteralTypes = true,
-      --     --     functionTypeParameters = true,
-      --     --   },
-      --     -- },
-      --   },
-      --   pyright = {
-      --     settings = {
-      --       python = {
-      --         analysis = {
-      --           -- deactivated for omega_race to limit fake diagnostics
-      --           typeCheckingMode = 'basic',
-      --           diagnosticSeverityOverrides = {
-      --             reportOptionalMemberAccess = 'none',
-      --           },
-      --         },
-      --       },
-      --     },
-      --   },
-      --   -- rust_analyzer = {},
-      --   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --   --
-      --   -- Some languages (like typescript) have entire language plugins that can be useful:
-      --   --    https://github.com/pmizio/typescript-tools.nvim
-      --   --
-      --   -- But for many setups, the LSP (`tsserver`) will work just fine
-      --   -- tsserver = {},
-      --   --
-      --
-      --   lua_ls = {
-      --     -- cmd = {...},
-      --     -- filetypes = { ...},
-      --     -- capabilities = {},
-      --     settings = {
-      --       Lua = {
-      --         hint = {
-      --           enable = true,
-      --         },
-      --         completion = {
-      --           callSnippet = 'Replace',
-      --         },
-      --         -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      --         -- diagnostics = { disable = { 'missing-fields' } },
-      --       },
-      --     },
-      --   },
-      -- }
       local servers = {
-        -- clangd = {},
+        --   clangd = {},
         gopls = {
           settings = {
             gopls = {
@@ -404,17 +348,29 @@ require('lazy').setup({
             },
           },
         },
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                -- deactivated for omega_race to limit fake diagnostics
+                typeCheckingMode = 'basic',
+                diagnosticSeverityOverrides = {
+                  reportOptionalMemberAccess = 'none',
+                },
+              },
+            },
+          },
+        },
+        --   -- rust_analyzer = {},
+        --   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+        --   --
+        --   -- Some languages (like typescript) have entire language plugins that can be useful:
+        --   --    https://github.com/pmizio/typescript-tools.nvim
+        --   --
+        --   -- But for many setups, the LSP (`tsserver`) will work just fine
+        --   -- tsserver = {},
+        --   --
         --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
-
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -435,10 +391,7 @@ require('lazy').setup({
       }
 
       -- Ensure the servers and tools above are installed
-      --  To check the current status of installed tools and/or manually install
-      --  other tools, you can run
-      --    :Mason
-      --
+      --  :Mason
       --  You can press `g?` for help in this menu.
       require('mason').setup()
 
