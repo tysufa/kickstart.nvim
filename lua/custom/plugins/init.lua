@@ -5,6 +5,15 @@
 return {
   { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
   {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('oil').setup()
+    end,
+  },
+  {
     'startup-nvim/startup.nvim',
     requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
     config = function()
