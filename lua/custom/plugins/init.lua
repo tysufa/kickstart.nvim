@@ -5,6 +5,14 @@
 return {
   { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
   {
+    'startup-nvim/startup.nvim',
+    requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('startup').setup(require 'custom.plugins.advanceConfigs.startup')
+    end,
+  },
+
+  {
     'nvim-tree/nvim-tree.lua',
     version = '*',
     lazy = false,
