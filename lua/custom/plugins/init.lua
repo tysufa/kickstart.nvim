@@ -3,6 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  { 'mbbill/undotree' },
   { 'ThePrimeagen/harpoon', dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
   {

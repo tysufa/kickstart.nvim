@@ -42,7 +42,7 @@ vim.keymap.set('n', '<leader>l', '<CMD>set wrap!<CR>', { desc = 'toggle wrapline
 -- vim.keymap.set('n', '<leader>ff', function() -- format file but has been integrated in the init.lua
 --   require('conform').format()
 -- end, { desc = '[F]ormat [F]ile' })
-vim.keymap.set({ 'n', 'v' }, 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Don't copy replaced text" })
+-- vim.keymap.set({ 'n', 'v' }, 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Don't copy replaced text" })
 
 vim.keymap.set('i', '<C-s>', '<esc>:w<CR>a', opts)
 vim.keymap.set('i', '<C-q>', '<esc>:wq<CR>', opts)
@@ -108,13 +108,38 @@ vim.keymap.set('n', '<leader>sn', function()
   builtin.find_files { cwd = vim.fn.stdpath 'config' }
 end, { desc = '[S]earch [N]eovim files' })
 
+vim.keymap.set('v', 'J', ":m '>+1<cr>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<cr>gv=gv")
+
+vim.keymap.set('x', '<leader>p', [["_dP]])
+
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+vim.keymap.set('n', '<leader>Y', [["+Y]])
+
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
+
+vim.keymap.set('n', '<leader>rp', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
+
+-- TODO : put this in the correct place
+vim.keymap.set('n', '<leader>ee', 'oif err != nil {<CR>}<Esc>Oreturn err<Esc>', { desc = 'add golang error test' })
+
+vim.keymap.set('n', '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>')
+
+vim.keymap.set('n', '*d', ']d', { remap = true })
+vim.keymap.set('n', 'ùd', '[d', { remap = true })
+
+-- OIL
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 -- HARPOON
 local harpoonMark = require 'harpoon.mark'
 local harpoonUi = require 'harpoon.ui'
 
-vim.keymap.set('n', '<C-A>', harpoonMark.add_file, { desc = 'Add current file to harpoon menu' })
+vim.keymap.set('n', '<C-A>', function()
+  harpoonMark.add_file()
+  harpoonUi.toggle_quick_menu()
+end, { desc = 'Add current file to harpoon menu' })
 vim.keymap.set('n', '<C-e>', harpoonUi.toggle_quick_menu, { desc = 'open harpoon quick menu' })
 
 vim.keymap.set('n', '<C-h>', function()
@@ -129,3 +154,6 @@ end, { desc = 'navigate to harpoon file 1' })
 vim.keymap.set('n', '<C-l>', function()
   harpoonUi.nav_file(4)
 end, { desc = 'navigate to harpoon file 1' })
+
+--UNDOTREE
+vim.keymap.set('n', '<C-X>', vim.cmd.UndotreeToggle)
