@@ -24,10 +24,10 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<A-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<A-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<A-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<A-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 vim.keymap.set('i', 'jk', '<ESC>', { desc = 'exit insert mode' })
 
@@ -109,3 +109,23 @@ vim.keymap.set('n', '<leader>sn', function()
 end, { desc = '[S]earch [N]eovim files' })
 
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+-- HARPOON
+local harpoonMark = require 'harpoon.mark'
+local harpoonUi = require 'harpoon.ui'
+
+vim.keymap.set('n', '<C-A>', harpoonMark.add_file, { desc = 'Add current file to harpoon menu' })
+vim.keymap.set('n', '<C-e>', harpoonUi.toggle_quick_menu, { desc = 'open harpoon quick menu' })
+
+vim.keymap.set('n', '<C-h>', function()
+  harpoonUi.nav_file(1)
+end, { desc = 'navigate to harpoon file 1' })
+vim.keymap.set('n', '<C-j>', function()
+  harpoonUi.nav_file(2)
+end, { desc = 'navigate to harpoon file 1' })
+vim.keymap.set('n', '<C-k>', function()
+  harpoonUi.nav_file(3)
+end, { desc = 'navigate to harpoon file 1' })
+vim.keymap.set('n', '<C-l>', function()
+  harpoonUi.nav_file(4)
+end, { desc = 'navigate to harpoon file 1' })
