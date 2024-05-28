@@ -132,8 +132,16 @@ return {
 
     ins_left {
       'filename',
+      file_status = true,
+      path = 4,
       cond = conditions.buffer_not_empty,
       color = { fg = colors.magenta, gui = 'bold' },
+      symbols = {
+        modified = '[+]', -- Text to show when the file is modified.
+        readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+        unnamed = '[No Name]', -- Text to show for unnamed buffers.
+        newfile = '[New]', -- Text to show for newly created file before first write
+      },
     }
 
     -- ins_left { 'location' }
