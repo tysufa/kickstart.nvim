@@ -130,7 +130,7 @@ vim.keymap.set('n', '*d', ']d', { remap = true })
 vim.keymap.set('n', 'ùd', '[d', { remap = true })
 
 -- OIL
-vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory with Oil' })
 
 -- HARPOON
 local harpoonMark = require 'harpoon.mark'
@@ -156,4 +156,17 @@ vim.keymap.set('n', '<C-l>', function()
 end, { desc = 'navigate to harpoon file 1' })
 
 --UNDOTREE
-vim.keymap.set('n', '<C-X>', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<C-X>', vim.cmd.UndotreeToggle, { desc = 'Toggle undo tree' })
+
+-- NOICE
+vim.keymap.set('n', '<leader>nl', function()
+  require('noice').cmd 'last'
+end, { desc = 'show last last message shown with noice' })
+
+vim.keymap.set('n', '<leader>nh', function()
+  require('noice').cmd 'history'
+end, { desc = 'show history of messages shown with noice' })
+
+vim.keymap.set('n', '<leader>cl', function()
+  require('noice').cmd 'dismiss'
+end, { desc = 'clear the screen of all noice notifications' })
