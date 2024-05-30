@@ -10,10 +10,14 @@ return {
     -- OPTIONAL:
     --   `nvim-notify` is only needed, if you want to use the notification view.
     --   If not available, we use `mini` as the fallback
-    -- 'rcarriga/nvim-notify',
+    'rcarriga/nvim-notify',
   },
   config = function()
     require('noice').setup {
+      -- messages = {
+      --   enabled = false,
+      -- },
+
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
@@ -30,6 +34,27 @@ return {
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
       },
+
+      routes = { -- Ignore certain lsp servers for progress messages
+        {
+          filter = {
+            event = 'lsp',
+            kind = 'progress',
+            cond = function(message)
+              local client = vim.tbl_get(message.opts, 'progress', 'client')
+              return client == 'lua_ls'
+            end,
+          },
+          opts = { skip = true },
+        },
+      },
+
+      -- routes = { -- Show as a notify message
+      --   {
+      --     view = 'notify',
+      --     filter = { event = 'msg_showmode' },
+      --   },
+      -- },
     }
   end,
 }

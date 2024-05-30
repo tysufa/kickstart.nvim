@@ -35,16 +35,16 @@ return {
   --   'nvim-lualine/lualine.nvim',
   --   dependencies = { 'nvim-tree/nvim-web-devicons' },
   -- },
-  {
-    'mfussenegger/nvim-dap',
-  },
+  -- {
+  --   'mfussenegger/nvim-dap',
+  -- },
 
-  {
-    'leoluz/nvim-dap-go',
-    ft = 'go',
-    dependencies = 'mfussenegger/nvim-dap',
-    config = function(_, opts)
-      require('dap-go').setup(opts)
-    end,
-  },
+  -- {
+  --   'leoluz/nvim-dap-go',
+  --   ft = 'go',
+  --   dependencies = 'mfussenegger/nvim-dap',
+  --   config = function(_, opts)
+  --     require('dap-go').setup(opts)
+  --   end,
+  -- },
 }
