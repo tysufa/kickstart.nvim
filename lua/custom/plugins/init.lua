@@ -3,6 +3,13 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   { 'mbbill/undotree' },
   { 'ThePrimeagen/harpoon', dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
